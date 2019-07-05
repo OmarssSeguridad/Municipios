@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="30dp"
+    android:orientation="vertical"
+
+    android:gravity="center"
+    tools:context=".MainActivity">
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:contentDescription="img_profile"
+        tools:layout_editor_absoluteX="118dp"
+        tools:layout_editor_absoluteY="16dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <EditText
+        android:id="@+id/correo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Correo"
+        android:inputType="textPersonName"
+        android:text="omar.blanco@8w.com.mx"
+        tools:layout_editor_absoluteX="4dp"
+        tools:layout_editor_absoluteY="219dp" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:text="123456"
+        tools:layout_editor_absoluteX="7dp"
+        tools:layout_editor_absoluteY="302dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="59dp">
+
+        <Button
+            android:id="@+id/ingresar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ingresar"
+            tools:layout_editor_absoluteX="160dp"
+            tools:layout_editor_absoluteY="405dp" />
+
+        <Button
+            android:id="@+id/salir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Salir"
+            tools:layout_editor_absoluteX="160dp"
+            tools:layout_editor_absoluteY="405dp" />
+    </LinearLayout>
+</LinearLayout>
