@@ -85,17 +85,39 @@ public class MenuActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_crear) {
+            setTitle("Crear Municipio");
+            InsertarMunicipio fragmento = new InsertarMunicipio();
+            androidx.fragment.app.FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.contenedor,fragmento,"fragmento");
+            transaction.commit();
+        } else if (id == R.id.nav_modificar) {
+            setTitle("Modificar Municipio");
+            Modificar fragmento = new Modificar();
+            androidx.fragment.app.FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.contenedor,fragmento,"fragmento");
+            transaction.commit();
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_eliminar) {
+            setTitle("Eliminar Municipio");
+            EliminarMunicipio fragmento = new EliminarMunicipio();
+            androidx.fragment.app.FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.contenedor,fragmento,"fragmento");
+            transaction.commit();
 
-        } else if (id == R.id.nav_tools) {
+        } else if (id == R.id.nav_consultar) {
+            setTitle("Consultar Municipio");
+            ConsultarMunicipio fragmento = new ConsultarMunicipio();
+            androidx.fragment.app.FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.contenedor,fragmento,"fragmento");
+            transaction.commit();
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_listar) {
+            setTitle("Listar Municipios");
+            ListarMunicipio fragmento = new ListarMunicipio();
+            androidx.fragment.app.FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.contenedor,fragmento,"fragmento");
+            transaction.commit();
 
         }
 

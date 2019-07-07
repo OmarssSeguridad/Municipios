@@ -14,4 +14,20 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="crear">Crear</string>
+    <string name="modificar">Modificar</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="consultar">Consultar</string>
+    <string name="listar_group_menu"><![CDATA[Listar /> </group> </menu>]]></string>
+    <string name="listar">Listar</string>
+    <string name="insertar">Insertar</string>
+    <string name="significado">Significado</string>
+    <string name="aqu_el_nombre_de_la_mascota">Aquí el nombre de la mascota</string>
+    <string name="aqu_su_edad">Aquí su edad</string>
+    <string name="igecem">IGECEM</string>
+    <string name="municipio">Municipio</string>
+    <string name="datos">Datos</string>
 </resources>
