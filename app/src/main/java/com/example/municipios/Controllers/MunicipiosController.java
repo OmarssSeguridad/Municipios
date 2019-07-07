@@ -22,13 +22,15 @@ public class MunicipiosController {
     }
 
 
-    public int eliminarMunicipio(Municipio municipio) {
+    public int eliminarMunicipio(int id) {
 
         SQLiteDatabase baseDeDatos = ayudanteBaseDeDatos.getWritableDatabase();
-        String[] argumentos = {String.valueOf(municipio.getId())};
-        baseDeDatos.delete("zonariesgos", "idmunicipios = ?", argumentos);
-        return baseDeDatos.delete(NOMBRE_TABLA, "id = ?", argumentos);
+
+        baseDeDatos.delete("zonariesgos", "idmunicipio = "+id,null);
+        return baseDeDatos.delete(NOMBRE_TABLA, "id = "+id, null);
     }
+
+
 
     public long nuevoMunicipio(Municipio municipio) {
         // writable porque vamos a insertar
@@ -63,6 +65,8 @@ public class MunicipiosController {
         String[] argumentosParaActualizar = {String.valueOf(municipio.getId())};
         return baseDeDatos.update(NOMBRE_TABLA, valoresParaActualizar, campoParaActualizar, argumentosParaActualizar);
     }
+
+
 
     public ArrayList<String> obtenerMunicipios() {
         ArrayList<String> lista = new ArrayList<>();
@@ -118,6 +122,50 @@ public class MunicipiosController {
         return lista;
     }
 
+    public Municipio buscarMunicipio(int id) {
+        Municipio municipio = new Municipio();
+        // readable porque no vamos a modificar, solamente leer
+        SQLiteDatabase baseDeDatos = ayudanteBaseDeDatos.getReadableDatabase();
+        // SELECT nombre, edad, id
+        String[] columnasAConsultar = {"municipio", "significado", "cabecera", "superficie", "altitud", "clima", "latitud", "longitud", "id"};
+
+        Cursor cursor = baseDeDatos.query(
+                NOMBRE_TABLA,//from municipios
+                columnasAConsultar,
+                "id = "+id,
+                null,
+                null,
+                null,
+                null
+        );
+
+        if (cursor == null) {
+
+            return municipio;
+
+        }
+        if (!cursor.moveToFirst()) return municipio;
+
+        do {
+            // ZonasController zona = new ZonasController(getContext);
+            // El 0 es el número de la columna, como seleccionamos
+            municipio.setId(cursor.getInt(8));
+            municipio.setMunicipio(cursor.getString(0));
+            municipio.setSignificado(cursor.getString(1));
+            municipio.setCabecera(cursor.getString(2));
+            municipio.setSuperficie(cursor.getDouble(3));
+            municipio.setAltitud(cursor.getDouble(4));
+            municipio.setClima(cursor.getString(5));
+            municipio.setLatitud(cursor.getDouble(6));
+            municipio.setLongitud(cursor.getDouble(7));
+
+        }while (cursor.moveToNext()) ;
+
+
+        // Fin del ciclo. Cerramos cursor y regresamos la lista de mascotas :)
+        cursor.close();
+        return municipio;
+    }
 
 
     public ArrayList<String> obtenerZonas(int id) {

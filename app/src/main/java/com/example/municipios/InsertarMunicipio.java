@@ -41,7 +41,7 @@ public class InsertarMunicipio extends Fragment {
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Municipio municipio= new Municipio(2, "Metepec","Cerro de los maguelles", "Metepec",
+                Municipio municipio= new Municipio(4, "Metepec","Cerro de los magueyes", "Metepec",
                         123.23,134,"Cálido",1323,123);
                 long id = municipiosController.nuevoMunicipio(municipio);
                 if (id == -1) {
@@ -56,7 +56,7 @@ public class InsertarMunicipio extends Fragment {
 
                 }
 
-                ZonaRiesgo zona = new ZonaRiesgo( 2, "Terremoto");
+                ZonaRiesgo zona = new ZonaRiesgo( 4, "Volcanes");
                 long idZona = zonasController.nuevaZona(zona);
                 if (idZona == -1) {
                     // De alguna manera ocurrió un error

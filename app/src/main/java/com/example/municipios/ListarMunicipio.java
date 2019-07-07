@@ -36,19 +36,12 @@ public class ListarMunicipio extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_listar_municipio, container, false);
         ListView l = (ListView)view.findViewById(R.id.lv_municipios);
-        //Agregar ListView
-        /*
-
-        Cursor cursor = sqlite.getRegistro();
-        ArrayList<String> reg = sqlite.getAnimal(cursor);
-
-         */
 
         municipiosController=new MunicipiosController(getContext());
         zonasController = new ZonasController(getContext());
         ArrayList<String> municipios = municipiosController.obtenerMunicipios();
 
-        ArrayList<String> zonas = zonasController.obtenerZonas(2);
+       // ArrayList<String> zonas = zonasController.obtenerZonas(2);
        // ArrayList<String> reg = sqlite.getAnimal(cursor);
 
         ArrayAdapter<String> adaptador = new ArrayAdapter<String>(getContext(),android.R.layout.simple_list_item_1,municipios);

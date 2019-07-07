@@ -5,6 +5,10 @@ public class ZonaRiesgo {
     private int idMunicipio;
     private String desastreNatural;
 
+    public ZonaRiesgo() {
+
+    }
+
     public ZonaRiesgo(int id, int idMunicipio, String desastreNatural) {
         this.id = id;
         this.idMunicipio = idMunicipio;

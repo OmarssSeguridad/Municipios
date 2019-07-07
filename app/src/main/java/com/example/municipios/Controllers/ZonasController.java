@@ -52,8 +52,8 @@ public class ZonasController {
 
 
 
-    public ArrayList<String> obtenerZonas(int id) {
-        ArrayList<String> zonas = new ArrayList<>();
+    public ArrayList<ZonaRiesgo> obtenerZonas(int id) {
+        ArrayList<ZonaRiesgo> zonas = new ArrayList<>();
         SQLiteDatabase baseDeDatos = ayudanteBaseDeDatos.getReadableDatabase();
         String[] columnasAConsultar = {"id", "idmunicipio", "desastrenatural"};
         Cursor cursor = baseDeDatos.query(
@@ -71,12 +71,11 @@ public class ZonasController {
         }
         if (!cursor.moveToFirst()) return zonas;
         do {
-            String item="";
-
-           // item+= cursor.getInt(0)+"\r\n";
-           // item+= cursor.getInt(1)+"\r\n";
-            item+=cursor.getString(2)+"\r\n";
-            zonas.add(item);
+            ZonaRiesgo zona = new ZonaRiesgo();
+            zona.setId(cursor.getInt(0));
+            zona.setIdMunicipio(cursor.getInt(1));
+            zona.setDesastreNatural(cursor.getString(2));
+            zonas.add(zona);
         } while (cursor.moveToNext());
         cursor.close();
         return zonas;

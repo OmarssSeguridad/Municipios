@@ -23,6 +23,9 @@ public class Municipio {
         this.longitud = longitud;
     }
 
+    public  Municipio(){
+        
+    }
     public int getId() {
         return id;
     }
