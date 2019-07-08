@@ -23,8 +23,8 @@ public class ZonasController {
     public int eliminarZona(ZonaRiesgo zona) {
 
         SQLiteDatabase baseDeDatos = ayudanteBaseDeDatos.getWritableDatabase();
-        String[] argumentos = {String.valueOf(zona.getId())};
-        return baseDeDatos.delete(NOMBRE_TABLA, "id = ?", argumentos);
+        //String[] argumentos = {String.valueOf(zona.getId())};
+        return baseDeDatos.delete(NOMBRE_TABLA, "id = "+zona.getId(), null);
     }
 
     public long nuevaZona(ZonaRiesgo zona) {

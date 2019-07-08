@@ -27,7 +27,7 @@ import java.util.List;
 
 
 public class Modificar extends Fragment {
-    Button btnModificar, btnCancelar, btnBuscar;
+    Button btnModificar, btnCancelar, btnBuscar, btnMapa;
     TextView tvId, tvMunicipio, tvSignificado, tvCabecera, tvSuperficie, tvAltitud, tvBuscar;
     Spinner spClima;
     MunicipiosController municipiosController;
@@ -49,6 +49,10 @@ public class Modificar extends Fragment {
         View view= inflater.inflate(R.layout.fragment_modificar, container, false);
 
         btnBuscar=view.findViewById(R.id.btn_mod_buscar);
+        btnMapa=view.findViewById(R.id.btn_mod_mapa);
+        btnCancelar=view.findViewById(R.id.btn_mod_cancelar);
+
+
         tvBuscar=view.findViewById(R.id.tv_mod_buscar);
 
 
@@ -69,6 +73,8 @@ public class Modificar extends Fragment {
         cbDerrumbes=view.findViewById(R.id.cb_mod_derrumbe);
 
         btnModificar.setVisibility(view.INVISIBLE);
+        btnCancelar.setVisibility(view.INVISIBLE);
+        btnMapa.setVisibility(view.INVISIBLE);
         tvId.setVisibility(view.INVISIBLE);
         tvMunicipio.setVisibility(view.INVISIBLE);
         tvSignificado.setVisibility(view.INVISIBLE);
@@ -82,6 +88,9 @@ public class Modificar extends Fragment {
         cbIncendio.setVisibility(view.INVISIBLE);
         cbVolcanica.setVisibility(view.INVISIBLE);
         cbDerrumbes.setVisibility(view.INVISIBLE);
+
+        municipiosController = new MunicipiosController(getContext());
+        zonasController = new ZonasController(getContext());
 
         btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,31 +148,41 @@ public class Modificar extends Fragment {
                     cbIncendio.setVisibility(view.VISIBLE);
                     cbVolcanica.setVisibility(view.VISIBLE);
                     cbDerrumbes.setVisibility(view.VISIBLE);
+                    btnCancelar.setVisibility(view.VISIBLE);
+                    btnMapa.setVisibility(view.VISIBLE);
+
 
                     ArrayList<ZonaRiesgo> zonas = zonasController.obtenerZonas(municipio.getId());
                     for(int i=0; i<zonas.size();i++) {
                         switch (zonas.get(i).getDesastreNatural()) {
                             case ("Inundación"):
+
                                 cbInundacion.setChecked(true);
                                 dtInundacion = zonas.get(i);
+                                System.out.println("------------id "+dtInundacion.getId()+dtInundacion.getIdMunicipio()+dtInundacion.getDesastreNatural());
                                 break;
                             case ("Deslave"):
+                                System.out.println("----------------------Deslave");
                                 cbDeslave.setChecked(true);
                                 dtDeslave = zonas.get(i);
                                 break;
                             case ("Zona sísmica"):
+                                System.out.println("----------------------Sismica");
                                 cbSismica.setChecked(true);
                                 dtSismica = zonas.get(i);
                                 break;
                             case ("Incendio forestal"):
+                                System.out.println("----------------------Forestal");
                                 cbIncendio.setChecked(true);
                                 dtIncendio = zonas.get(i);
                                 break;
                             case ("Zona volcánica"):
+                                System.out.println("----------------------Volcanica");
                                 cbVolcanica.setChecked(true);
                                 dtVolcanica = zonas.get(i);
                                 break;
                             case ("Derrumbes"):
+                                System.out.println("----------------------Derrumbes");
                                 cbDerrumbes.setChecked(true);
                                 dtDerrumbes = zonas.get(i);
                                 break;
@@ -175,6 +194,22 @@ public class Modificar extends Fragment {
                     tvCabecera.setText(municipio.getCabecera());
                     tvSuperficie.setText(municipio.getSuperficie()+"");
                     tvAltitud.setText(municipio.getAltitud()+"");
+                    btnModificar.setVisibility(view.INVISIBLE);
+                    btnCancelar.setVisibility(view.INVISIBLE);
+                    btnMapa.setVisibility(view.INVISIBLE);
+                    tvId.setVisibility(view.INVISIBLE);
+                    tvMunicipio.setVisibility(view.INVISIBLE);
+                    tvSignificado.setVisibility(view.INVISIBLE);
+                    tvCabecera.setVisibility(view.INVISIBLE);
+                    tvSuperficie.setVisibility(view.INVISIBLE);
+                    tvAltitud.setVisibility(view.INVISIBLE);
+                    spClima.setVisibility(view.INVISIBLE);
+                    cbInundacion.setVisibility(view.INVISIBLE);
+                    cbDeslave.setVisibility(view.INVISIBLE);
+                    cbSismica.setVisibility(view.INVISIBLE);
+                    cbIncendio.setVisibility(view.INVISIBLE);
+                    cbVolcanica.setVisibility(view.INVISIBLE);
+                    cbDerrumbes.setVisibility(view.INVISIBLE);
                 }
 
             }
@@ -296,7 +331,7 @@ public class Modificar extends Fragment {
                         ZonaRiesgo zona = new ZonaRiesgo( municipio.getId(), "Derrumbes");
                         long idZona = zonasController.nuevaZona(zona);
                     }
-                    if(cbDerrumbes.isChecked()==true && dtDerrumbes==null){
+                    if(cbDerrumbes.isChecked()!=true && dtDerrumbes!=null){
                         zonasController.eliminarZona(dtDerrumbes);
                     }
 
@@ -304,6 +339,10 @@ public class Modificar extends Fragment {
                     tvId.setText("");
                     tvMunicipio.setText("");
                     tvSignificado.setText("");
+                    tvCabecera.setText("");
+                    tvSuperficie.setText("");
+                    tvAltitud.setText("");
+                    spClima.setSelection(0);
 
                 }
 

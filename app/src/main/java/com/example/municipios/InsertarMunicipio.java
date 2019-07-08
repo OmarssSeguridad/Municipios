@@ -182,7 +182,16 @@ public class InsertarMunicipio extends Fragment {
                     tvId.setText("");
                     tvMunicipio.setText("");
                     tvSignificado.setText("");
-
+                    tvCabecera.setText("");
+                    tvSuperficie.setText("");
+                    tvAltitud.setText("");
+                    spClima.setSelection(0);
+                    cbDeslave.setChecked(false);
+                    cbDerrumbes.setChecked(false);
+                    cbVolcanica.setChecked(false);
+                    cbIncendio.setChecked(false);
+                    cbSismica.setChecked(false);
+                    cbInundacion.setChecked(false);
                 }
 
             }
