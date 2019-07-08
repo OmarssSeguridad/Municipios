@@ -34,6 +34,7 @@ public class Modificar extends Fragment {
     ZonasController zonasController;
     CheckBox cbInundacion, cbDeslave, cbSismica, cbIncendio, cbVolcanica, cbDerrumbes;
     ZonaRiesgo dtInundacion, dtDeslave, dtSismica, dtIncendio, dtVolcanica, dtDerrumbes;
+    Municipio municipio;
 
 
     public Modificar() {
@@ -100,7 +101,7 @@ public class Modificar extends Fragment {
                     tvBuscar.requestFocus();
                     return;
                 }
-                Municipio municipio= municipiosController.buscarMunicipio(idI);
+                 municipio= municipiosController.buscarMunicipio(idI);
                 if(municipio==null){
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                     builder.setTitle("Error");
@@ -174,20 +175,10 @@ public class Modificar extends Fragment {
                     tvCabecera.setText(municipio.getCabecera());
                     tvSuperficie.setText(municipio.getSuperficie()+"");
                     tvAltitud.setText(municipio.getAltitud()+"");
-                    //spClima.setVisibility(view.VISIBLE);
-                    //cbInundacion.setVisibility(view.VISIBLE);
-                    //cbDeslave.setVisibility(view.VISIBLE);
-                    //cbSismica.setVisibility(view.VISIBLE);
-                    //cbIncendio.setVisibility(view.VISIBLE);
-                    //cbVolcanica.setVisibility(view.VISIBLE);
-                    //cbDerrumbes.setVisibility(view.VISIBLE);
                 }
 
             }
         });
-
-        municipiosController = new MunicipiosController(getContext());
-        zonasController = new ZonasController(getContext());
 
 
 
@@ -195,33 +186,129 @@ public class Modificar extends Fragment {
 
             @Override
             public void onClick(View view) {
-              /*  Municipio municipio=new Municipio(1,"MEtepexMod","s","sdfd",12,1123,"Frio",23,23);
 
-                int filasModificadas = municipiosController.guardarCambios(municipio);
-                if (filasModificadas != 1) {
-                    // De alguna forma ocurrió un error porque se debió modificar únicamente una fila
-                    Toast.makeText(getContext(), "Error guardando cambios. Intente de nuevo.", Toast.LENGTH_SHORT).show();
+                String  municipioS=tvMunicipio.getText().toString(), significado=tvSignificado.getText().toString(),
+                        cabecera=tvCabecera.getText().toString(), superficie=tvSuperficie.getText().toString(), altitud=tvAltitud.getText().toString(),
+                        clima=spClima.getSelectedItem().toString();
+
+                if ("".equals(municipioS)) {
+                    tvMunicipio.setError("Escribe el Municipio");
+                    tvMunicipio.requestFocus();
+                    return;
+                }
+                if ("".equals(significado)) {
+                    tvSignificado.setError("Escribe el Significado");
+                    tvSignificado.requestFocus();
+                    return;
+                }
+                if ("".equals(cabecera)) {
+                    tvCabecera.setError("Escribe la Cabecera");
+                    tvCabecera.requestFocus();
+                    return;
+                }
+                if ("".equals(superficie)) {
+                    tvSuperficie.setError("Escribe la Superficie");
+                    tvSuperficie.requestFocus();
+                    return;
+                }
+                if ("".equals(altitud)) {
+                    tvAltitud.setError("Escribe la Altitud");
+                    tvAltitud.requestFocus();
+                    return;
+                }
+
+                double superficieD, altitudD;
+
+                try {
+                    superficieD= Double.parseDouble(tvSuperficie.getText().toString());
+                } catch (NumberFormatException e) {
+                    tvSuperficie.setError("Superficie es tipo número");
+                    tvSuperficie.requestFocus();
+                    return;
+                }
+
+                try {
+                    altitudD = Double.parseDouble(tvAltitud.getText().toString());
+                } catch (NumberFormatException e) {
+                    tvAltitud.setError("Altitud es tipo número");
+                    tvAltitud.requestFocus();
+                    return;
+                }
+
+
+
+                Municipio municipioModificar= new Municipio(municipio.getId(), municipioS,significado, cabecera,
+                        superficieD,altitudD,clima,0,0);
+                long id = municipiosController.guardarCambios(municipioModificar);
+                if (id == -1) {
+                    // De alguna manera ocurrió un error
+                    Toast.makeText(getContext(), "Error al guardar. Intenta de nuevo", Toast.LENGTH_SHORT).show();
+                    System.out.println("----------------------------Error Guardar Municipio");
                 } else {
+                    // Terminar
+                    ;
+                    Toast.makeText(getContext(), "Se guardó correctamente", Toast.LENGTH_SHORT).show();
+                    if(cbInundacion.isChecked()==true && dtInundacion==null){
+                        ZonaRiesgo zona = new ZonaRiesgo( municipio.getId(), "Inundación");
+                        zonasController.nuevaZona(zona);
+                    }
+                    if(cbInundacion.isChecked()!=true && dtInundacion!=null){
+                        zonasController.eliminarZona(dtInundacion);
+                    }
 
 
-                    // Si las cosas van bien, volvemos a la principal
-                    // cerrando esta actividad
-                    Toast.makeText(getContext(), "Se guardaron los cambios", Toast.LENGTH_SHORT).show();
+                    if(cbDeslave.isChecked()==true && dtInundacion==null){
+                        ZonaRiesgo zona = new ZonaRiesgo( municipio.getId(), "Deslave");
+                        long idZona = zonasController.nuevaZona(zona);
+                    }
+                    if(cbDeslave.isChecked()!=true && dtInundacion!=null){
+                        zonasController.eliminarZona(dtDeslave);
+                    }
+
+
+                    if(cbSismica.isChecked()==true && dtSismica==null){
+                        ZonaRiesgo zona = new ZonaRiesgo( municipio.getId(), "Zona sísmica");
+                        long idZona = zonasController.nuevaZona(zona);
+                    }
+                    if(cbSismica.isChecked()!=true && dtSismica!=null){
+                        zonasController.eliminarZona(dtSismica);
+                    }
+
+                    if(cbIncendio.isChecked()==true && dtIncendio==null){
+                        ZonaRiesgo zona = new ZonaRiesgo( municipio.getId(), "Incendio forestal");
+                        long idZona = zonasController.nuevaZona(zona);
+                    }
+                    if(cbIncendio.isChecked()!=true && dtIncendio!=null){
+                        zonasController.eliminarZona(dtIncendio);
+                    }
+
+
+                    if(cbVolcanica.isChecked()==true && dtVolcanica==null){
+                        ZonaRiesgo zona = new ZonaRiesgo( municipio.getId(), "Zona volcánica");
+                        long idZona = zonasController.nuevaZona(zona);
+                    }
+                    if(cbVolcanica.isChecked()!=true && dtVolcanica!=null){
+                        zonasController.eliminarZona(dtVolcanica);
+                    }
+
+
+                    if(cbDerrumbes.isChecked()==true && dtDerrumbes==null){
+                        ZonaRiesgo zona = new ZonaRiesgo( municipio.getId(), "Derrumbes");
+                        long idZona = zonasController.nuevaZona(zona);
+                    }
+                    if(cbDerrumbes.isChecked()==true && dtDerrumbes==null){
+                        zonasController.eliminarZona(dtDerrumbes);
+                    }
+
+
+                    tvId.setText("");
+                    tvMunicipio.setText("");
+                    tvSignificado.setText("");
 
                 }
 
-                */
-           /*   Municipio municipio= municipiosController.buscarMunicipio(4);
-                System.out.println(municipio.getId()+"\n "+ municipio.getMunicipio()+"\n "+municipio.getSignificado()+municipio.getCabecera()
-                        +"\n "+municipio.getSuperficie()+"\n "+municipio.getAltitud()+"\n "+municipio.getClima()+municipio.getLatitud()
-                        +"\n "+municipio.getLongitud());
-
-                ArrayList<ZonaRiesgo> zonas = zonasController.obtenerZonas(4);
-                for(int i=0;i<zonas.size();i++){
-                    System.out.println(zonas.get(i).getId()+"\n "+zonas.get(i).getIdMunicipio()+"\n "+zonas.get(i).getDesastreNatural());
-                }
-*/
             }
+
 
 
         });
