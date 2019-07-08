@@ -1,6 +1,7 @@
 package com.example.municipios;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -27,7 +28,7 @@ import java.util.List;
 
 public class InsertarMunicipio extends Fragment {
 
-    Button btnGuardar, btnCancelar;
+    Button btnGuardar, btnCancelar, btnMapa;
     TextView tvId, tvMunicipio, tvSignificado, tvCabecera, tvSuperficie, tvAltitud;
     Spinner spClima;
     MunicipiosController municipiosController;
@@ -45,6 +46,7 @@ public class InsertarMunicipio extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_insertar_municipio, container, false);
         btnGuardar= view.findViewById(R.id.btn_insertar_guardar);
+        btnMapa=view.findViewById(R.id.btn_insert_mapa);
         tvId=view.findViewById(R.id.tv_insert_id);
         tvMunicipio=view.findViewById(R.id.tv_insert_municipio);
         tvSignificado=view.findViewById(R.id.tv_insert_significado);
@@ -77,6 +79,14 @@ public class InsertarMunicipio extends Fragment {
 
         spClima.setAdapter(adapterClima);
 
+        btnMapa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(view.getContext(), MapsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
