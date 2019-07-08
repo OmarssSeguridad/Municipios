@@ -97,7 +97,7 @@ public class MunicipiosController {
             String item = "";
             // El 0 es el número de la columna, como seleccionamos
             item += "IGECEM: " + cursor.getInt(8) + "\r\n";
-            item += "Municipio" + cursor.getString(0) + "\r\n";
+            item += "Municipio: " + cursor.getString(0) + "\r\n";
             item += "Significado: " + cursor.getString(1) + "\r\n";
             item += "Cabecera: " + cursor.getString(2) + "\r\n";
             item += "Superficie: " + cursor.getDouble(3) + "\r\n";
@@ -105,12 +105,12 @@ public class MunicipiosController {
             item += "Clima: " + cursor.getString(5) + "\r\n";
             item += "Latitud: " + cursor.getDouble(6) + "\r\n";
             item += "Longitud: " + cursor.getDouble(7) + "\r\n";
-            item += "Zonas de Riesgo: ";
+            item += "Zonas de Riesgo:\r\n";
 
 
             ArrayList<String> zonas = obtenerZonas(cursor.getInt(8));
             for(int i=0;i<zonas.size();i++){
-                item+=zonas.get(i)+"\r\n";
+                item+="*"+zonas.get(i);
             }
 
             lista.add(item);
@@ -189,8 +189,6 @@ public class MunicipiosController {
         do {
             String item="";
 
-            // item+= cursor.getInt(0)+"\r\n";
-            // item+= cursor.getInt(1)+"\r\n";
             item+=cursor.getString(2)+"\r\n";
             zonas.add(item);
         } while (cursor.moveToNext());

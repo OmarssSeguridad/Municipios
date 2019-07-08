@@ -30,4 +30,17 @@
     <string name="igecem">IGECEM</string>
     <string name="municipio">Municipio</string>
     <string name="datos">Datos</string>
+    <string name="clima">Clima</string>
+    <string name="altitud">Altitud</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="superficie">Superficie</string>
+    <string name="cabecera">Cabecera</string>
+    <string name="mapa">Mapa</string>
+    <string name="inundaci_n">Inundación</string>
+    <string name="deslave">Deslave</string>
+    <string name="incendio_forestal">Incendio forestal</string>
+    <string name="zona_v_lcanica">Zona vólcanica</string>
+    <string name="derrumbes">Derrumbes</string>
+    <string name="zona_s_smica">Zona sísmica</string>
+    <string name="buscar">Buscar</string>
 </resources>
