@@ -49,14 +49,11 @@ public class Modificar extends Fragment {
         View view= inflater.inflate(R.layout.fragment_modificar, container, false);
 
         btnBuscar=view.findViewById(R.id.btn_mod_buscar);
-        btnMapa=view.findViewById(R.id.btn_mod_mapa);
-        btnCancelar=view.findViewById(R.id.btn_mod_cancelar);
-
-
         tvBuscar=view.findViewById(R.id.tv_mod_buscar);
 
 
         btnModificar= view.findViewById(R.id.btn_mod_guardar);
+        btnMapa=view.findViewById(R.id.btn_mod_mapa);
         tvId=view.findViewById(R.id.tv_mod_id);
         tvMunicipio=view.findViewById(R.id.tv_mod_municipio);
         tvSignificado=view.findViewById(R.id.tv_mod_significado);
@@ -73,8 +70,6 @@ public class Modificar extends Fragment {
         cbDerrumbes=view.findViewById(R.id.cb_mod_derrumbe);
 
         btnModificar.setVisibility(view.INVISIBLE);
-        btnCancelar.setVisibility(view.INVISIBLE);
-        btnMapa.setVisibility(view.INVISIBLE);
         tvId.setVisibility(view.INVISIBLE);
         tvMunicipio.setVisibility(view.INVISIBLE);
         tvSignificado.setVisibility(view.INVISIBLE);
@@ -111,7 +106,7 @@ public class Modificar extends Fragment {
                     return;
                 }
                  municipio= municipiosController.buscarMunicipio(idI);
-                if(municipio==null){
+                if(municipio.getId()==0){
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                     builder.setTitle("Error");
                     builder.setMessage("No se encontró el municipio");
@@ -148,9 +143,6 @@ public class Modificar extends Fragment {
                     cbIncendio.setVisibility(view.VISIBLE);
                     cbVolcanica.setVisibility(view.VISIBLE);
                     cbDerrumbes.setVisibility(view.VISIBLE);
-                    btnCancelar.setVisibility(view.VISIBLE);
-                    btnMapa.setVisibility(view.VISIBLE);
-
 
                     ArrayList<ZonaRiesgo> zonas = zonasController.obtenerZonas(municipio.getId());
                     for(int i=0; i<zonas.size();i++) {
@@ -194,22 +186,6 @@ public class Modificar extends Fragment {
                     tvCabecera.setText(municipio.getCabecera());
                     tvSuperficie.setText(municipio.getSuperficie()+"");
                     tvAltitud.setText(municipio.getAltitud()+"");
-                    btnModificar.setVisibility(view.INVISIBLE);
-                    btnCancelar.setVisibility(view.INVISIBLE);
-                    btnMapa.setVisibility(view.INVISIBLE);
-                    tvId.setVisibility(view.INVISIBLE);
-                    tvMunicipio.setVisibility(view.INVISIBLE);
-                    tvSignificado.setVisibility(view.INVISIBLE);
-                    tvCabecera.setVisibility(view.INVISIBLE);
-                    tvSuperficie.setVisibility(view.INVISIBLE);
-                    tvAltitud.setVisibility(view.INVISIBLE);
-                    spClima.setVisibility(view.INVISIBLE);
-                    cbInundacion.setVisibility(view.INVISIBLE);
-                    cbDeslave.setVisibility(view.INVISIBLE);
-                    cbSismica.setVisibility(view.INVISIBLE);
-                    cbIncendio.setVisibility(view.INVISIBLE);
-                    cbVolcanica.setVisibility(view.INVISIBLE);
-                    cbDerrumbes.setVisibility(view.INVISIBLE);
                 }
 
             }
@@ -343,6 +319,12 @@ public class Modificar extends Fragment {
                     tvSuperficie.setText("");
                     tvAltitud.setText("");
                     spClima.setSelection(0);
+                    cbDeslave.setChecked(false);
+                    cbDerrumbes.setChecked(false);
+                    cbVolcanica.setChecked(false);
+                    cbIncendio.setChecked(false);
+                    cbSismica.setChecked(false);
+                    cbInundacion.setChecked(false);
 
                 }
 
