@@ -30,7 +30,9 @@
                 android:id="@+id/tv_insert_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/igecem" />
+                android:hint="@string/igecem"
+                android:inputType="number" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -81,6 +83,18 @@
             app:layout_constraintHorizontal_bias="0.224"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cb_insert_volcanica" />
+
+        <Button
+            android:id="@+id/btnMasivo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="57dp"
+            android:layout_marginLeft="57dp"
+            android:text="Masivo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/btn_insert_cancelar"
+            tools:layout_editor_absoluteY="497dp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout3"
@@ -136,7 +150,8 @@
                 android:id="@+id/tv_insert_altitud"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/altitud" />
+                android:hint="@string/altitud"
+                android:inputType="numberDecimal" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
