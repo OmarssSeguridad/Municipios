@@ -7,26 +7,26 @@
         <item
             android:id="@+id/nav_crear"
             android:icon="@drawable/crear"
-            android:title="@string/crear" />
+            android:title="Alta Municipios" />
         <item
             android:id="@+id/nav_modificar"
             android:icon="@drawable/modificar"
-            android:title="@string/modificar" />
+            android:title="Modificar Municipios" />
         <item
             android:id="@+id/nav_eliminar"
             android:icon="@drawable/eliminar"
-            android:title="@string/eliminar" />
+            android:title="Eliminar Municipios" />
         <item
             android:id="@+id/nav_consultarmunicipios"
             android:icon="@drawable/buscar"
-            android:title="@string/consultar_municipios" />
+            android:title="Consultar Municipios" />
         <item
             android:id="@+id/nav_consultarzonas"
             android:icon="@drawable/buscar"
-            android:title="@string/consultar_zonas" />
+            android:title="Consultar Zonas" />
         <item
             android:id="@+id/nav_listar"
             android:icon="@drawable/listar"
-            android:title="@string/listar" />
+            android:title="Consulta General" />
     </group>
 </menu>

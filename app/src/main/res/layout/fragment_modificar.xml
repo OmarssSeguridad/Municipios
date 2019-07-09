@@ -180,7 +180,7 @@
             app:layout_constraintStart_toEndOf="@+id/btn_mod_guardar"
             app:layout_constraintTop_toTopOf="@+id/cb_mod_volcanica" />
 
-        <CheckBox
+        <RadioButton
             android:id="@+id/cb_mod_inundacion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -191,7 +191,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-        <CheckBox
+        <RadioButton
             android:id="@+id/cb_mod_deslave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -206,7 +206,7 @@
             app:layout_constraintStart_toEndOf="@+id/cb_mod_inundacion"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-        <CheckBox
+        <RadioButton
             android:id="@+id/cb_mod_sismica"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -217,7 +217,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cb_mod_inundacion" />
 
-        <CheckBox
+        <RadioButton
             android:id="@+id/cb_mod_incendio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -232,7 +232,7 @@
             app:layout_constraintStart_toEndOf="@+id/cb_mod_sismica"
             app:layout_constraintTop_toBottomOf="@+id/cb_mod_inundacion" />
 
-        <CheckBox
+        <RadioButton
             android:id="@+id/cb_mod_volcanica"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -243,7 +243,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cb_mod_sismica" />
 
-        <CheckBox
+        <RadioButton
             android:id="@+id/cb_mod_derrumbe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

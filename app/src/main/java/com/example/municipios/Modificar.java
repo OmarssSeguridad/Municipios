@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,7 +35,7 @@ public class Modificar extends Fragment {
     Spinner spClima;
     MunicipiosController municipiosController;
     ZonasController zonasController;
-    CheckBox cbInundacion, cbDeslave, cbSismica, cbIncendio, cbVolcanica, cbDerrumbes;
+    RadioButton cbInundacion, cbDeslave, cbSismica, cbIncendio, cbVolcanica, cbDerrumbes;
     ZonaRiesgo dtInundacion, dtDeslave, dtSismica, dtIncendio, dtVolcanica, dtDerrumbes;
     Municipio municipio;
     Municipio municipioModificar;

@@ -4,10 +4,11 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="30dp"
-    android:orientation="vertical"
-
+    android:background="#FDFDFD"
     android:gravity="center"
+
+    android:orientation="vertical"
+    android:padding="30dp"
     tools:context=".MainActivity">
 
     <ImageButton
@@ -17,7 +18,7 @@
         android:contentDescription="img_profile"
         tools:layout_editor_absoluteX="118dp"
         tools:layout_editor_absoluteY="16dp"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@tools:sample/avatars[2]" />
 
     <EditText
         android:id="@+id/correo"
@@ -27,7 +28,7 @@
         android:ems="10"
         android:hint="Correo"
         android:inputType="textPersonName"
-        android:text="lourdesvega21@hotmail.com"
+        android:text="omar.blanco@8w.com.mx"
         tools:layout_editor_absoluteX="4dp"
         tools:layout_editor_absoluteY="219dp" />
 

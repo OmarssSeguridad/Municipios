@@ -179,7 +179,7 @@
             app:layout_constraintStart_toEndOf="@+id/btn_insertar_guardar"
             app:layout_constraintTop_toBottomOf="@+id/cb_insert_volcanica" />
 
-        <CheckBox
+        <RadioButton
             android:id="@+id/cb_insert_inundacion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -190,7 +190,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-        <CheckBox
+        <RadioButton
             android:id="@+id/cb_insert_deslave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -205,7 +205,7 @@
             app:layout_constraintStart_toEndOf="@+id/cb_insert_inundacion"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-        <CheckBox
+        <RadioButton
             android:id="@+id/cb_insert_sismica"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -216,7 +216,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cb_insert_inundacion" />
 
-        <CheckBox
+        <RadioButton
             android:id="@+id/cb_insert_incendio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -231,7 +231,7 @@
             app:layout_constraintStart_toEndOf="@+id/cb_insert_sismica"
             app:layout_constraintTop_toBottomOf="@+id/cb_insert_inundacion" />
 
-        <CheckBox
+        <RadioButton
             android:id="@+id/cb_insert_volcanica"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -242,7 +242,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cb_insert_sismica" />
 
-        <CheckBox
+        <RadioButton
             android:id="@+id/cb_insert_derrumbe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
