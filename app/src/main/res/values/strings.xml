@@ -46,4 +46,8 @@
     <string name="title_activity_maps">Map</string>
     <string name="consultar_municipios">Consultar Municipios</string>
     <string name="consultar_zonas">Consultar Zonas</string>
+    <string name="consultar_nombre">Consultar municipio (IGECEM/Nombre)</string>
+    <string name="consultar_municipio">Consultar municipio</string>
+    <string name="title_activity_mostrar_mapa">Map</string>
+    <string name="mostrar_en_mapa">Mostrar en mapa</string>
 </resources>

@@ -56,7 +56,7 @@ public class Modificar extends Fragment {
 
 
         btnModificar= view.findViewById(R.id.btn_mod_guardar);
-        btnMapa=view.findViewById(R.id.btn_mod_mapa);
+       // btnMapa=view.findViewById(R.id.btn_mod_mapa);
         tvId=view.findViewById(R.id.tv_mod_id);
         tvMunicipio=view.findViewById(R.id.tv_mod_municipio);
         tvSignificado=view.findViewById(R.id.tv_mod_significado);

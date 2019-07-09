@@ -122,6 +122,8 @@ public class MunicipiosController {
         return lista;
     }
 
+
+
     public Municipio buscarMunicipio(int id) {
         Municipio municipio = new Municipio();
         // readable porque no vamos a modificar, solamente leer
@@ -166,6 +168,9 @@ public class MunicipiosController {
         cursor.close();
         return municipio;
     }
+
+
+
 
 
     public ArrayList<String> obtenerZonas(int id) {
