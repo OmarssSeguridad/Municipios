@@ -34,6 +34,8 @@ public class InsertarMunicipio extends Fragment {
     MunicipiosController municipiosController;
     ZonasController zonasController;
     CheckBox cbInundacion, cbDeslave, cbSismica, cbIncendio, cbVolcanica, cbDerrumbes;
+    Intent mapa;
+
     public InsertarMunicipio() {
         // Required empty public constructor
     }
@@ -82,9 +84,18 @@ public class InsertarMunicipio extends Fragment {
         btnMapa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent;
-                intent = new Intent(view.getContext(), MapsActivity.class);
-                startActivity(intent);
+                ArrayList<String> lista = new ArrayList<String>();
+                lista.add(tvId.getText().toString());
+                lista.add(tvMunicipio.getText().toString());
+                lista.add(tvSignificado.getText().toString());
+                lista.add(tvCabecera.getText().toString());
+                lista.add(tvSuperficie.getText().toString());
+                lista.add(tvAltitud.getText().toString());
+                lista.add(spClima.getSelectedItem().toString());
+                //Lo envío al activity
+                mapa =new Intent(view.getContext(), MapsActivity.class);
+                mapa.putStringArrayListExtra("lista",lista);
+                startActivity(mapa);
             }
         });
 
@@ -153,52 +164,54 @@ public class InsertarMunicipio extends Fragment {
                 }
 
 
-
-                Municipio municipio= new Municipio(idI, municipioS,significado, cabecera,
-                        superficieD,altitudD,clima,0,0);
-                long id = municipiosController.nuevoMunicipio(municipio);
-                if (id == -1) {
-                    // De alguna manera ocurrió un error
-                    Toast.makeText(getContext(), "Error al guardar. Intenta de nuevo", Toast.LENGTH_SHORT).show();
-                    System.out.println("----------------------------Error Guardar Municipio");
-                } else {
-                    // Terminar
-                    ;
                     Toast.makeText(getContext(), "Se guardó correctamente", Toast.LENGTH_SHORT).show();
-                    if(cbInundacion.isChecked()==true){
-                        ZonaRiesgo zona = new ZonaRiesgo( idI, "Inundación");
-                        zonasController.nuevaZona(zona);
-                    }
-                    if(cbDeslave.isChecked()==true){
-                        ZonaRiesgo zona = new ZonaRiesgo( idI, "Deslave");
-                        long idZona = zonasController.nuevaZona(zona);
-                    }
-                    if(cbSismica.isChecked()==true){
-                        ZonaRiesgo zona = new ZonaRiesgo( idI, "Zona sísmica");
-                        long idZona = zonasController.nuevaZona(zona);
-                    }
-                    if(cbIncendio.isChecked()==true){
-                        ZonaRiesgo zona = new ZonaRiesgo( idI, "Incendio forestal");
-                        long idZona = zonasController.nuevaZona(zona);
-                    }
-                    if(cbVolcanica.isChecked()==true){
-                        ZonaRiesgo zona = new ZonaRiesgo( idI, "Zona volcánica");
-                        long idZona = zonasController.nuevaZona(zona);
-                    }
-                    if(cbDerrumbes.isChecked()==true){
-                        ZonaRiesgo zona = new ZonaRiesgo( idI, "Derrumbes");
-                        long idZona = zonasController.nuevaZona(zona);
-                    }
+
                     tvId.setText("");
                     tvMunicipio.setText("");
                     tvSignificado.setText("");
 
-                }
 
             }
         });
         return view;
     }
+    public void CargaZonas()
+    {
+        if(cbInundacion.isChecked()==true)
+        {
+            ZonaRiesgo zona = new ZonaRiesgo( idI, "Inundación");
+            zonasController.nuevaZona(zona);
 
+        }
+        if(cbDeslave.isChecked()==true)
+        {
+            ZonaRiesgo zona = new ZonaRiesgo( idI, "Deslave");
+            long idZona = zonasController.nuevaZona(zona);
+
+        }
+        if(cbSismica.isChecked()==true)
+        {
+            ZonaRiesgo zona = new ZonaRiesgo( idI, "Zona sísmica");
+            long idZona = zonasController.nuevaZona(zona);
+
+        }
+        if(cbIncendio.isChecked()==true)
+        {
+            ZonaRiesgo zona = new ZonaRiesgo( idI, "Incendio forestal");
+            long idZona = zonasController.nuevaZona(zona);
+
+        }
+        if(cbVolcanica.isChecked()==true)
+        {
+            ZonaRiesgo zona = new ZonaRiesgo( idI, "Zona volcánica");
+            long idZona = zonasController.nuevaZona(zona);
+
+        }
+        if(cbDerrumbes.isChecked()==true)
+        {
+            ZonaRiesgo zona = new ZonaRiesgo( idI, "Derrumbes");
+            long idZona = zonasController.nuevaZona(zona);
+
+        }    }
 
 }
