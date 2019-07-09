@@ -27,7 +27,7 @@
         android:ems="10"
         android:hint="Correo"
         android:inputType="textPersonName"
-        android:text="omar.blanco@8w.com.mx"
+        android:text="lourdesvega21@hotmail.com"
         tools:layout_editor_absoluteX="4dp"
         tools:layout_editor_absoluteY="219dp" />
 

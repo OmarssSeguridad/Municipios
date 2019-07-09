@@ -14,4 +14,36 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="crear">Crear</string>
+    <string name="modificar">Modificar</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="consultar">Consultar</string>
+    <string name="listar_group_menu"><![CDATA[Listar /> </group> </menu>]]></string>
+    <string name="listar">Listar</string>
+    <string name="insertar">Insertar</string>
+    <string name="significado">Significado</string>
+    <string name="aqu_el_nombre_de_la_mascota">Aquí el nombre de la mascota</string>
+    <string name="aqu_su_edad">Aquí su edad</string>
+    <string name="igecem">IGECEM</string>
+    <string name="municipio">Municipio</string>
+    <string name="datos">Datos</string>
+    <string name="clima">Clima</string>
+    <string name="altitud">Altitud</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="superficie">Superficie</string>
+    <string name="cabecera">Cabecera</string>
+    <string name="mapa">Mapa</string>
+    <string name="inundaci_n">Inundación</string>
+    <string name="deslave">Deslave</string>
+    <string name="incendio_forestal">Incendio forestal</string>
+    <string name="zona_v_lcanica">Zona vólcanica</string>
+    <string name="derrumbes">Derrumbes</string>
+    <string name="zona_s_smica">Zona sísmica</string>
+    <string name="buscar">Buscar</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="consultar_municipios">Consultar Municipios</string>
+    <string name="consultar_zonas">Consultar Zonas</string>
 </resources>
