@@ -165,7 +165,42 @@ public class InsertarMunicipio extends Fragment {
 
 
                     Toast.makeText(getContext(), "Se guardó correctamente", Toast.LENGTH_SHORT).show();
+                    if(cbInundacion.isChecked()==true)
+                    {
+                        ZonaRiesgo zona = new ZonaRiesgo( idI, "Inundación");
+                        zonasController.nuevaZona(zona);
 
+                    }
+                    if(cbDeslave.isChecked()==true)
+                    {
+                        ZonaRiesgo zona = new ZonaRiesgo( idI, "Deslave");
+                        long idZona = zonasController.nuevaZona(zona);
+
+                    }
+                    if(cbSismica.isChecked()==true)
+                    {
+                        ZonaRiesgo zona = new ZonaRiesgo( idI, "Zona sísmica");
+                        long idZona = zonasController.nuevaZona(zona);
+
+                    }
+                    if(cbIncendio.isChecked()==true)
+                    {
+                        ZonaRiesgo zona = new ZonaRiesgo( idI, "Incendio forestal");
+                        long idZona = zonasController.nuevaZona(zona);
+
+                    }
+                    if(cbVolcanica.isChecked()==true)
+                    {
+                        ZonaRiesgo zona = new ZonaRiesgo( idI, "Zona volcánica");
+                        long idZona = zonasController.nuevaZona(zona);
+
+                    }
+                    if(cbDerrumbes.isChecked()==true)
+                    {
+                        ZonaRiesgo zona = new ZonaRiesgo( idI, "Derrumbes");
+                        long idZona = zonasController.nuevaZona(zona);
+
+                    }
                     tvId.setText("");
                     tvMunicipio.setText("");
                     tvSignificado.setText("");
@@ -177,41 +212,7 @@ public class InsertarMunicipio extends Fragment {
     }
     public void CargaZonas()
     {
-        if(cbInundacion.isChecked()==true)
-        {
-            ZonaRiesgo zona = new ZonaRiesgo( idI, "Inundación");
-            zonasController.nuevaZona(zona);
-
-        }
-        if(cbDeslave.isChecked()==true)
-        {
-            ZonaRiesgo zona = new ZonaRiesgo( idI, "Deslave");
-            long idZona = zonasController.nuevaZona(zona);
-
-        }
-        if(cbSismica.isChecked()==true)
-        {
-            ZonaRiesgo zona = new ZonaRiesgo( idI, "Zona sísmica");
-            long idZona = zonasController.nuevaZona(zona);
-
-        }
-        if(cbIncendio.isChecked()==true)
-        {
-            ZonaRiesgo zona = new ZonaRiesgo( idI, "Incendio forestal");
-            long idZona = zonasController.nuevaZona(zona);
-
-        }
-        if(cbVolcanica.isChecked()==true)
-        {
-            ZonaRiesgo zona = new ZonaRiesgo( idI, "Zona volcánica");
-            long idZona = zonasController.nuevaZona(zona);
-
-        }
-        if(cbDerrumbes.isChecked()==true)
-        {
-            ZonaRiesgo zona = new ZonaRiesgo( idI, "Derrumbes");
-            long idZona = zonasController.nuevaZona(zona);
-
-        }    }
+        //Hola
+    }
 
 }
