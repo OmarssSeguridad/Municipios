@@ -143,7 +143,6 @@ public class InsertarMunicipio extends Fragment {
                 }
 
 
-
                 Municipio municipio= new Municipio(idI, municipioS,significado, cabecera,
                         superficieD,altitudD,clima,0,0);
                 long id = municipiosController.nuevoMunicipio(municipio);

@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.Toast;
 
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -83,41 +84,77 @@ public class MenuActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
+        String usuario;
+        Bundle extras = getIntent().getExtras();
+        usuario = extras.getString("usuario");
 
+
+
+        int id = item.getItemId();
         if (id == R.id.nav_crear) {
-            setTitle("Crear Municipio");
-            InsertarMunicipio fragmento = new InsertarMunicipio();
-            androidx.fragment.app.FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.contenedor,fragmento,"fragmento");
-            transaction.commit();
+            if (usuario.equals("admin")) {
+                setTitle("Crear Municipio");
+                InsertarMunicipio fragmento = new InsertarMunicipio();
+                androidx.fragment.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.contenedor, fragmento, "fragmento");
+                transaction.commit();
+            }
+            else
+            {
+                Toast.makeText(this,"Sin Privilegios suficientes",Toast.LENGTH_SHORT).show();
+            }
         } else if (id == R.id.nav_modificar) {
-            setTitle("Modificar Municipio");
+            if (usuario.equals("admin")) {
+
+                setTitle("Modificar Municipio");
             Modificar fragmento = new Modificar();
             androidx.fragment.app.FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.contenedor,fragmento,"fragmento");
             transaction.commit();
+            }
+            else
+            {
+                Toast.makeText(this,"Sin Privilegios suficientes",Toast.LENGTH_SHORT).show();
+            }
 
         } else if (id == R.id.nav_eliminar) {
-            setTitle("Eliminar Municipio");
-            EliminarMunicipio fragmento = new EliminarMunicipio();
-            androidx.fragment.app.FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.contenedor,fragmento,"fragmento");
-            transaction.commit();
+                if (usuario.equals("admin")) {
+                    setTitle("Eliminar Municipio");
+                    EliminarMunicipio fragmento = new EliminarMunicipio();
+                    androidx.fragment.app.FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.contenedor,fragmento,"fragmento");
+                    transaction.commit();
+                }
+                else
+                {
+                    Toast.makeText(this,"Sin Privilegios suficientes",Toast.LENGTH_SHORT).show();
+                }
 
         } else if (id == R.id.nav_consultar) {
-            setTitle("Consultar Municipio");
-            ConsultarMunicipio fragmento = new ConsultarMunicipio();
-            androidx.fragment.app.FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.contenedor,fragmento,"fragmento");
-            transaction.commit();
+                    if (usuario.equals("admin")||usuario.equals("user")) {
+                        setTitle("Consultar Municipio");
+                        ConsultarMunicipio fragmento = new ConsultarMunicipio();
+                        androidx.fragment.app.FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.contenedor,fragmento,"fragmento");
+                        transaction.commit();
+                    }
+                    else
+                    {
+                        Toast.makeText(this,"Sin Privilegios suficientes",Toast.LENGTH_SHORT).show();
+                    }
 
         } else if (id == R.id.nav_listar) {
-            setTitle("Listar Municipios");
-            ListarMunicipio fragmento = new ListarMunicipio();
-            androidx.fragment.app.FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.contenedor,fragmento,"fragmento");
-            transaction.commit();
+                        if (usuario.equals("admin")||usuario.equals("user")) {
+                            setTitle("Listar Municipios");
+                            ListarMunicipio fragmento = new ListarMunicipio();
+                            androidx.fragment.app.FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
+                            transaction.replace(R.id.contenedor,fragmento,"fragmento");
+                            transaction.commit();
+                        }
+                        else
+                        {
+                            Toast.makeText(this,"Sin Privilegios suficientes",Toast.LENGTH_SHORT).show();
+                        }
 
         }
 

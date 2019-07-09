@@ -12,7 +12,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
         Intent intent;
-
+        String usuario;
+        String pass;
 @Override
 protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,12 +37,20 @@ public void onClick (View view)
         String valorCorreo = correo.getText().toString();
         String valorContraseña = contraseña.getText().toString();
 
-        if ((valorCorreo.equals("omar.blanco@8w.com.mx") || valorCorreo.equals("lourdesvega21@hotmail.com") || valorCorreo.equals("djdaan86@gmail.com ")) && valorContraseña.equals("123456")) {
-        intent = new Intent(view.getContext(), MenuActivity.class);
-        startActivity(intent);
-        Toast.makeText(this, "¡Bienvenido!", Toast.LENGTH_SHORT).show();
+
+
+
+        if ((valorCorreo.equals("admin") || valorCorreo.equals("user")&& valorContraseña.equals("123456"))) {
+                intent = new Intent(view.getContext(), MenuActivity.class);
+                usuario= correo.getText().toString();
+                pass= contraseña.getText().toString();
+                intent.putExtra("usuario",usuario);
+                intent.putExtra("pass",pass);
+
+                startActivity(intent);
+                Toast.makeText(this, "¡Bienvenido!", Toast.LENGTH_SHORT).show();
         } else {
-        Toast.makeText(this, "Usuario y/o Contraseña incorrecto", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Usuario y/o Contraseña incorrecto", Toast.LENGTH_SHORT).show();
         }
         break;
         case R.id.salir:
