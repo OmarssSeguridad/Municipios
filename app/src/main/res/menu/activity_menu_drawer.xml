@@ -17,9 +17,13 @@
             android:icon="@drawable/eliminar"
             android:title="@string/eliminar" />
         <item
-            android:id="@+id/nav_consultar"
+            android:id="@+id/nav_consultarmunicipios"
             android:icon="@drawable/buscar"
-            android:title="@string/consultar" />
+            android:title="@string/consultar_municipios" />
+        <item
+            android:id="@+id/nav_consultarzonas"
+            android:icon="@drawable/buscar"
+            android:title="@string/consultar_zonas" />
         <item
             android:id="@+id/nav_listar"
             android:icon="@drawable/listar"

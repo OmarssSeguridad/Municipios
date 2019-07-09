@@ -1,6 +1,7 @@
 package com.example.municipios;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -40,7 +41,7 @@ public class InsertarMunicipio extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_insertar_municipio, container, false);
@@ -179,19 +180,19 @@ public class InsertarMunicipio extends Fragment {
                         ZonaRiesgo zona = new ZonaRiesgo( idI, "Derrumbes");
                         long idZona = zonasController.nuevaZona(zona);
                     }
-                    tvId.setText("");
-                    tvMunicipio.setText("");
-                    tvSignificado.setText("");
-                    tvCabecera.setText("");
-                    tvSuperficie.setText("");
-                    tvAltitud.setText("");
-                    spClima.setSelection(0);
-                    cbDeslave.setChecked(false);
-                    cbDerrumbes.setChecked(false);
-                    cbVolcanica.setChecked(false);
-                    cbIncendio.setChecked(false);
-                    cbSismica.setChecked(false);
-                    cbInundacion.setChecked(false);
+
+
+                    Intent intent = new Intent(getContext(), MapsActivity.class);
+                    intent.putExtra("idmunicipio", municipio.getId());
+                    intent.putExtra("municipio",municipio.getMunicipio());
+                    intent.putExtra("significado",municipio.getSignificado());
+                    intent.putExtra("cabecera",municipio.getCabecera());
+                    intent.putExtra("superficie",municipio.getSuperficie());
+                    intent.putExtra("altitud",municipio.getAltitud());
+                    intent.putExtra("clima",municipio.getClima());
+                    intent.putExtra("vista","insertar");
+                    startActivity(intent);
+
                 }
 
             }

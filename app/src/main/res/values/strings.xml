@@ -43,4 +43,7 @@
     <string name="derrumbes">Derrumbes</string>
     <string name="zona_s_smica">Zona sísmica</string>
     <string name="buscar">Buscar</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="consultar_municipios">Consultar Municipios</string>
+    <string name="consultar_zonas">Consultar Zonas</string>
 </resources>

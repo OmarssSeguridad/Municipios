@@ -105,13 +105,18 @@ public class MenuActivity extends AppCompatActivity
             transaction.replace(R.id.contenedor,fragmento,"fragmento");
             transaction.commit();
 
-        } else if (id == R.id.nav_consultar) {
+        } else if (id == R.id.nav_consultarmunicipios) {
             setTitle("Consultar Municipio");
             ConsultarMunicipio fragmento = new ConsultarMunicipio();
-            androidx.fragment.app.FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.contenedor,fragmento,"fragmento");
+            androidx.fragment.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.contenedor, fragmento, "fragmento");
             transaction.commit();
-
+        }else if(id== R.id.nav_consultarzonas){
+            setTitle("Consultar Zonas");
+            ConsultarZonas fragmento = new ConsultarZonas();
+            androidx.fragment.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.contenedor, fragmento, "fragmento");
+            transaction.commit();
         } else if (id == R.id.nav_listar) {
             setTitle("Listar Municipios");
             ListarMunicipio fragmento = new ListarMunicipio();

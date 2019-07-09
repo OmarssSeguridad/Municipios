@@ -1,6 +1,8 @@
 package com.example.municipios;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -35,6 +37,7 @@ public class Modificar extends Fragment {
     CheckBox cbInundacion, cbDeslave, cbSismica, cbIncendio, cbVolcanica, cbDerrumbes;
     ZonaRiesgo dtInundacion, dtDeslave, dtSismica, dtIncendio, dtVolcanica, dtDerrumbes;
     Municipio municipio;
+    Municipio municipioModificar;
 
 
     public Modificar() {
@@ -248,7 +251,7 @@ public class Modificar extends Fragment {
 
 
 
-                Municipio municipioModificar= new Municipio(municipio.getId(), municipioS,significado, cabecera,
+                 municipioModificar= new Municipio(municipio.getId(), municipioS,significado, cabecera,
                         superficieD,altitudD,clima,0,0);
                 long id = municipiosController.guardarCambios(municipioModificar);
                 if (id == -1) {
@@ -312,19 +315,50 @@ public class Modificar extends Fragment {
                     }
 
 
-                    tvId.setText("");
-                    tvMunicipio.setText("");
-                    tvSignificado.setText("");
-                    tvCabecera.setText("");
-                    tvSuperficie.setText("");
-                    tvAltitud.setText("");
-                    spClima.setSelection(0);
-                    cbDeslave.setChecked(false);
-                    cbDerrumbes.setChecked(false);
-                    cbVolcanica.setChecked(false);
-                    cbIncendio.setChecked(false);
-                    cbSismica.setChecked(false);
-                    cbInundacion.setChecked(false);
+                    android.app.AlertDialog dialog = new android.app.AlertDialog
+                            .Builder(getContext())
+                            .setPositiveButton("Modificar mapa", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Intent intent = new Intent(getContext(), MapsActivity.class);
+                                    intent.putExtra("idmunicipio", municipioModificar.getId());
+                                    intent.putExtra("municipio",municipioModificar.getMunicipio());
+                                    intent.putExtra("significado",municipioModificar.getSignificado());
+                                    intent.putExtra("cabecera",municipioModificar.getCabecera());
+                                    intent.putExtra("superficie",municipioModificar.getSuperficie());
+                                    intent.putExtra("altitud",municipioModificar.getAltitud());
+                                    intent.putExtra("clima",municipioModificar.getClima());
+                                    intent.putExtra("vista","insertar");
+                                    startActivity(intent);
+                                }
+                            })
+                            .setNegativeButton("No modificar", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+
+                                    tvId.setText("");
+                                    tvMunicipio.setText("");
+                                    tvSignificado.setText("");
+                                    tvCabecera.setText("");
+                                    tvSuperficie.setText("");
+                                    tvAltitud.setText("");
+                                    spClima.setSelection(0);
+                                    cbDeslave.setChecked(false);
+                                    cbDerrumbes.setChecked(false);
+                                    cbVolcanica.setChecked(false);
+                                    cbIncendio.setChecked(false);
+                                    cbSismica.setChecked(false);
+                                    cbInundacion.setChecked(false);
+                                }
+                            })
+                            .setTitle("Confirmar")
+                            .setMessage("¿Desea Modificar el mapa?")
+                            .create();
+                    dialog.show();
+
+
+
 
                 }
 
