@@ -24,6 +24,7 @@ import com.example.municipios.Modelos.ZonaRiesgo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 public class InsertarMunicipio extends Fragment {
@@ -76,13 +77,14 @@ public class InsertarMunicipio extends Fragment {
         climaList.add("Frio");
 
         ArrayAdapter<String> adapterClima = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, climaList);
-
         spClima.setAdapter(adapterClima);
-
         btnMasivo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Municipio municipio;
+                ZonaRiesgo zonaRiesgo;
+                ZonaRiesgo zonaRiesgo2;
                 municipio=new Municipio(1,"Acambay", "Okha «Dios» y mbaye «peñasco»: «Peñascos de Dios».", "Acambay",465.7,465.7, "Cálido",19.9958,-99.8417); municipiosController.nuevoMunicipio(municipio);
                 municipio=new Municipio(2,"Acolman", "Aculli «hombre», máitl «mano»: «Hombre con mano o brazo».", "Acolman de Nezahualcóyotl",83.95,83.95, "Semiárido",19.3998,-98.884); municipiosController.nuevoMunicipio(municipio);
                 municipio=new Municipio(3,"Aculco", "Atl «agua», cóltic «torcido» y co «en»: «En el agua torcida».", "Aculco de Espinosa",453.26,453.26, "Seco",20.0990629,-99.8272712); municipiosController.nuevoMunicipio(municipio);
@@ -208,7 +210,31 @@ public class InsertarMunicipio extends Fragment {
                 municipio=new Municipio(123,"Luvianos", "Nombrado así en honor al fundador de Villa Luvianos, Cristóbal Lubiano.nota 20?", "Villa Luvianos",703,703, "Semifrio",18.91966,-100.3062969); municipiosController.nuevoMunicipio(municipio);
                 municipio=new Municipio(124,"San José del Rincón", "Nombrado así en honor a San José. «Del Rincón» hace referencia al difícil acceso y relativo aislamiento de su cabecera municipal.", "San José del Rincón",492.25,492.25, "Frio",19.6359544,-100.2813478); municipiosController.nuevoMunicipio(municipio);
                 municipio=new Municipio(125,"Tonanitla", "Tonantzin «Nuestra madre» y tlan «lugar»: «Lugar de nuestra madre».", "Santa María Tonanitla",8.47,8.47, "Cálido",19.6798286,-99.0763197); municipiosController.nuevoMunicipio(municipio);
-
+                int i=1;
+                while ( i<=125) {
+                    String[] array = {"Inundación", "Deslave", "Zona sísmica", "Incendio forestal", "Zona volcánica", "Derrumbes"};
+                    String randomStr = array[new Random().nextInt(array.length)];
+                    String randomStr2 = array[new Random().nextInt(array.length)];
+                    if (randomStr.equals(randomStr2)){
+                         randomStr2 = array[new Random().nextInt(array.length)];
+                        if (randomStr.equals(randomStr2)) {
+                            randomStr2 = array[new Random().nextInt(array.length)];
+                            zonaRiesgo = new ZonaRiesgo(i, randomStr);
+                            zonaRiesgo2 = new ZonaRiesgo(i, randomStr2);
+                            zonasController.nuevaZona(zonaRiesgo);
+                            zonasController.nuevaZona(zonaRiesgo2);
+                            i++;
+                        }
+                    }
+                    else
+                    {
+                        zonaRiesgo = new ZonaRiesgo(i, randomStr);
+                        zonaRiesgo2 = new ZonaRiesgo(i, randomStr2);
+                        zonasController.nuevaZona(zonaRiesgo);
+                        zonasController.nuevaZona(zonaRiesgo2);
+                        i++;
+                    }
+                }
             }
         });
         btnGuardar.setOnClickListener(new View.OnClickListener() {
