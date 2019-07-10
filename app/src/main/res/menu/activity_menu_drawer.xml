@@ -28,5 +28,10 @@
             android:id="@+id/nav_listar"
             android:icon="@drawable/listar"
             android:title="@string/listar" />
+        <item
+            android:id="@+id/nav_salir"
+            android:icon="@drawable/salir"
+            android:title="@string/salir" />
+
     </group>
 </menu>

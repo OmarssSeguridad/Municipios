@@ -252,7 +252,7 @@ public class Modificar extends Fragment {
 
 
                  municipioModificar= new Municipio(municipio.getId(), municipioS,significado, cabecera,
-                        superficieD,altitudD,clima,0,0);
+                        superficieD,altitudD,clima,municipio.getLatitud(),municipio.getLongitud());
                 long id = municipiosController.guardarCambios(municipioModificar);
                 if (id == -1) {
                     // De alguna manera ocurrió un error

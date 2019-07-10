@@ -1,7 +1,13 @@
 package com.example.municipios;
 
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 
 import com.example.municipios.Controllers.MunicipiosController;
@@ -15,6 +21,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MostrarMapa extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private final int REQUEST_ACCESS_FINE = 0;
     Double latitud, longitud;
 
     @Override
@@ -56,8 +63,39 @@ public class MostrarMapa extends FragmentActivity implements OnMapReadyCallback 
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(latitud, longitud);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+        // mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        //CameraPosition cameraPosition = CameraPosition.builder().target(sydney).zoom(10).build();
+        //mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
+                    REQUEST_ACCESS_FINE
+            );
+            return;
+        }
+        Location myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+
+        // Add a marker in Sydney and move the camera
+        if (myLocation != null) {
+            LatLng sydney = new LatLng(latitud, longitud);
+            mMap.addMarker(new MarkerOptions()
+                    .position(sydney)
+                    .title("Marker"));
+          /*  mMap.addMarker(new MarkerOptions()
+                    .position(latlngMyLocation)
+                    .title("Mi ubicación")
+                    .snippet("En clase")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+            );*/
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sydney, 20));
+            mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        }
     }
 }

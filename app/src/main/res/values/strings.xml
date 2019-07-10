@@ -50,4 +50,5 @@
     <string name="consultar_municipio">Consultar municipio</string>
     <string name="title_activity_mostrar_mapa">Map</string>
     <string name="mostrar_en_mapa">Mostrar en mapa</string>
+    <string name="salir">Salir</string>
 </resources>

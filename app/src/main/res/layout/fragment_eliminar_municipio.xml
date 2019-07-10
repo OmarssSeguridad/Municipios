@@ -29,8 +29,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tv_Eliminar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="276dp"
+                android:layout_height="38dp"
                 android:hint="@string/buscar" />
         </com.google.android.material.textfield.TextInputLayout>
 

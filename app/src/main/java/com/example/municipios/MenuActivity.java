@@ -1,5 +1,6 @@
 package com.example.municipios;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -23,6 +24,8 @@ import android.view.Menu;
 
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    int tipoUsuario;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,12 +37,35 @@ public class MenuActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Créditos\n" +
+                        "Desarrollo de aplicaciones móviles\n" +
+                        "Alumna: Lourdes Cecilia Vega Mondragon\n" +
+                        "Profesora: Rocio Elizabeth Pulido Alba\n", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        Bundle extras = getIntent().getExtras();
+        // Si no hay datos (cosa rara) salimos
+        if (extras == null) {
+            finish();
+            return;
+        }
+        // Instanciar el controlador de las mascotas
+
+        // Rearmar la mascota
+        // Nota: igualmente solamente podríamos mandar el id y recuperar la mascota de la BD
+        tipoUsuario = extras.getInt("tipoUsuario");
+        if(tipoUsuario==1){
+
+            Menu nav_Menu = navigationView.getMenu();
+            nav_Menu.findItem(R.id.nav_crear).setVisible(false);
+            nav_Menu.findItem(R.id.nav_eliminar).setVisible(false);
+            nav_Menu.findItem(R.id.nav_modificar).setVisible(false);
+        }
+
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -124,6 +150,9 @@ public class MenuActivity extends AppCompatActivity
             transaction.replace(R.id.contenedor,fragmento,"fragmento");
             transaction.commit();
 
+        }else if (id == R.id.nav_salir){
+            intent = new Intent(MenuActivity.this, MenuActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
