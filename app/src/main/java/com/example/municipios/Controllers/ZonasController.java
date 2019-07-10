@@ -19,6 +19,15 @@ public class ZonasController {
         ayudanteBaseDeDatos = new BaseDatos(contexto);
     }
 
+    public long nuevaZona(ZonaRiesgo zona) {
+        // writable porque vamos a insertar
+        //int id, int idMunicipio, String desastreNatural
+        SQLiteDatabase baseDeDatos = ayudanteBaseDeDatos.getWritableDatabase();
+        ContentValues valoresParaInsertar = new ContentValues();
+        valoresParaInsertar.put("idmunicipio", zona.getIdMunicipio());
+        valoresParaInsertar.put("desastrenatural", zona.getDesastreNatural());
+        return baseDeDatos.insert(NOMBRE_TABLA, null, valoresParaInsertar);
+    }
 
     public int eliminarZona(ZonaRiesgo zona) {
 
@@ -112,15 +121,6 @@ public class ZonasController {
     }
 
 
-    public long nuevaZona(ZonaRiesgo zona) {
-        // writable porque vamos a insertar
-        //int id, int idMunicipio, String desastreNatural
-        SQLiteDatabase baseDeDatos = ayudanteBaseDeDatos.getWritableDatabase();
-        ContentValues valoresParaInsertar = new ContentValues();
-        valoresParaInsertar.put("idmunicipio", zona.getIdMunicipio());
-        valoresParaInsertar.put("desastrenatural", zona.getDesastreNatural());
-        return baseDeDatos.insert(NOMBRE_TABLA, null, valoresParaInsertar);
-    }
 
     public int guardarCambios(ZonaRiesgo zona) {
         SQLiteDatabase baseDeDatos = ayudanteBaseDeDatos.getWritableDatabase();

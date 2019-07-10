@@ -35,10 +35,18 @@ public void onClick (View view)
 
         String valorCorreo = correo.getText().toString();
         String valorContraseña = contraseña.getText().toString();
+        String usuario,pass;
+
 
         if ((valorCorreo.equals("omar.blanco@8w.com.mx") || valorCorreo.equals("lourdesvega21@hotmail.com") || valorCorreo.equals("djdaan86@gmail.com ")) && valorContraseña.equals("123456")) {
         intent = new Intent(view.getContext(), MenuActivity.class);
-        startActivity(intent);
+        intent = new Intent(view.getContext(), MenuActivity.class);
+        usuario= correo.getText().toString();
+        pass= contraseña.getText().toString();
+        intent.putExtra("usuario",usuario);
+        intent.putExtra("pass",pass);
+
+                startActivity(intent);
         Toast.makeText(this, "¡Bienvenido!", Toast.LENGTH_SHORT).show();
         } else {
         Toast.makeText(this, "Usuario y/o Contraseña incorrecto", Toast.LENGTH_SHORT).show();

@@ -315,7 +315,6 @@ public class Modificar extends Fragment {
                         zonasController.eliminarZona(dtDerrumbes);
                     }
 
-
                     android.app.AlertDialog dialog = new android.app.AlertDialog
                             .Builder(getContext())
                             .setPositiveButton("Modificar mapa", new DialogInterface.OnClickListener() {

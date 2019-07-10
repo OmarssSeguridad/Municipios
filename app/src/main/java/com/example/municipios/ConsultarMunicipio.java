@@ -86,15 +86,15 @@ public class ConsultarMunicipio extends Fragment {
                     btnMostrar.setVisibility(view.VISIBLE);
                 }
 
-btnMostrar.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        Intent intent = new Intent(getContext(), MostrarMapa.class);
-        intent.putExtra("latitud",municipio.getLatitud());
-        intent.putExtra("longitud",municipio.getLongitud());
-        startActivity(intent);
-    }
-});
+                btnMostrar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getContext(), MostrarMapa.class);
+                        intent.putExtra("latitud",municipio.getLatitud());
+                        intent.putExtra("longitud",municipio.getLongitud());
+                        startActivity(intent);
+                    }
+                });
             }
 
         });
